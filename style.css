@@ -1,0 +1,246 @@
+:root {
+    --gold: #cfa670;
+    --dark-bg: #0a0a0a;
+    --glass: rgba(255,255,255,0.05);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--dark-bg);
+    color: #fff;
+}
+
+/* ================= BACKGROUND STARS ================= */
+.star-background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(circle at top left, #0a0a0a, #000 80%);
+    background-image:
+        radial-gradient(white, rgba(255,255,255,0.15) 1px, transparent 20px),
+        radial-gradient(white, rgba(255,255,255,0.1) 1px, transparent 40px),
+        radial-gradient(255, 215, 0, 0.05 1px, transparent 30px);
+    background-size: 200px 200px, 400px 400px, 500px 500px;
+    animation: starAnimation 120s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes starAnimation {
+    from { background-position: 0 0, 0 0, 0 0; }
+    to { background-position: 1000px 1000px, 500px 500px, -300px -300px; }
+}
+
+.star-background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(207,166,112,0.1) 0%, transparent 80%);
+    animation: pulseGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(0.95); opacity: 0.3; }
+    100% { transform: scale(1.05); opacity: 0.5; }
+}
+
+.star-background::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(207,166,112,0.05));
+}
+
+/* ================= CONTAINER ================= */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 15px;
+    overflow: visible;
+}
+
+/* ================= HEADER ================= */
+h1 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3rem);
+}
+
+.hero-sub {
+    text-align: center;
+    color: #aaa;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    margin-top: -10px;
+}
+
+.shop-time {
+    text-align: center;
+    color: #ccc;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+.shop-time span:first-child {
+    font-weight: 600;
+    margin-right: 6px;
+    color: var(--gold);
+}
+
+/* ================= FILTER NAV (STICKY) ================= */
+.filter-nav {
+    position: sticky;
+    top: 0;
+    z-index: 300;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 14px 0;
+    margin: 10px 0 25px 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    transition: all 0.3s ease;
+}
+
+.filter-nav li {
+    cursor: pointer;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #888;
+    padding: 8px 14px;
+}
+
+.filter-nav li.active,
+.filter-nav li:hover {
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+}
+
+/* ================= MENU GRID ================= */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding-top: 20px;
+}
+
+/* ================= MENU ITEM / CARD ================= */
+.menu-item {
+    display: flex;
+    gap: 12px;
+    background: var(--glass);
+    padding: 14px;
+    border-radius: 14px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: transform 0.3s ease;
+    animation: fadeUp 0.4s ease forwards;
+}
+
+.menu-item:hover {
+    transform: translateY(-6px);
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.item-img {
+    width: 75px;
+    height: 75px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.menu-item:hover .item-img {
+    transform: scale(1.1);
+}
+
+.item-info { flex: 1; }
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(207,166,112,0.2);
+    margin-bottom: 6px;
+}
+
+.item-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.price {
+    color: var(--gold);
+    font-weight: 600;
+    background: rgba(207,166,112,0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+p {
+    font-size: 0.75rem;
+    color: #aaa;
+}
+
+/* ================= ORDER BUTTON ================= */
+.order-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #25d366;
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    border-radius: 5px;
+    box-shadow: 0 6px 15px rgba(37,211,102,0.4);
+}
+
+/* ================= WHATSAPP FLOAT ================= */
+.whatsapp-float-main {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    z-index: 500;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 480px) {
+    .menu-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .item-img {
+        width: 100%;
+        height: 160px;
+    }
+
+    .item-header {
+        justify-content: center;
+    }
+}
