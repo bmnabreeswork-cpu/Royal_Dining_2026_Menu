@@ -244,3 +244,41 @@ p {
         justify-content: center;
     }
 }
+
+
+.site-footer {
+    margin-top: 60px;
+    padding: 30px 20px;
+    text-align: center;
+    background: rgba(15, 23, 42, 0.9);
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.site-footer p {
+    color: #cbd5e1;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    background: #16a34a;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.download-btn i {
+    font-size: 18px;
+}
+
+.download-btn:hover {
+    background: #22c55e;
+    transform: translateY(-2px);
+}
